@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import loss from "./loss.svg";
+import profit from "./profit.svg";
 const Stocks = () => {
   const [buyPrice, setBuyPrice] = useState();
   const [currPrice, setCurrPrice] = useState();
@@ -9,7 +10,13 @@ const Stocks = () => {
     e.preventDefault();
     setisShow(!isShow);
   };
-
+  const img = () => {
+    if ((currPrice - buyPrice) * qty >= 0) {
+      return profit;
+    } else {
+      return loss;
+    }
+  };
   return (
     <div>
       <h1>Stocks Profit/Loss</h1>
@@ -51,7 +58,8 @@ const Stocks = () => {
       </form>
       {isShow && (
         <div>
-          <h1> the net is {(currPrice - buyPrice) * qty}</h1>
+          <h1> The P/L is {(currPrice - buyPrice) * qty}</h1>
+          <img alt="img" height="200rem" src={img()}></img>
         </div>
       )}
     </div>

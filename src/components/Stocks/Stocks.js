@@ -17,6 +17,13 @@ const Stocks = () => {
       return loss;
     }
   };
+  const color = () => {
+    if ((currPrice - buyPrice) * qty >= 0) {
+      return "green";
+    } else {
+      return "red";
+    }
+  };
   return (
     <div>
       <h1>Stocks Profit/Loss</h1>
@@ -58,7 +65,9 @@ const Stocks = () => {
       </form>
       {isShow && (
         <div>
-          <h1> The P/L is {(currPrice - buyPrice) * qty}</h1>
+          <h1 style={{ color: color() }}>
+            The P/L is {(currPrice - buyPrice) * qty}
+          </h1>
           <img alt="img" height="200rem" src={img()}></img>
         </div>
       )}

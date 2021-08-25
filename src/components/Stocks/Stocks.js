@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 
 const Stocks = () => {
-  const [buyPrice, setBuyPrice] = useState(0);
-  const [currPrice, setCurrPrice] = useState(0);
-  const [qty, setqty] = useState(0);
+  const [buyPrice, setBuyPrice] = useState();
+  const [currPrice, setCurrPrice] = useState();
+  const [qty, setqty] = useState();
+  const [isShow, setisShow] = useState(false);
   const submitFun = (e) => {
     e.preventDefault();
-    alert(`buy price ${buyPrice}, ${currPrice},${qty}`);
+    setisShow(!isShow);
   };
 
   return (
     <div>
       <h1>Stocks Profit/Loss</h1>
       <form onSubmit={submitFun}>
-        <label htmlFor="buy">Stock Buy Price : </label>
+        <label htmlFor="buy">Stock initial Price : </label>
         <input
           id="buy"
           name="buy"
           value={buyPrice}
+          type="Number"
           onChange={(e) => setBuyPrice(e.target.value)}
+          placeholder="Enter the initial price"
         ></input>
         <br></br>
         <br></br>
@@ -27,7 +30,9 @@ const Stocks = () => {
           id="currentPrice"
           name="currentPrice"
           value={currPrice}
+          type="Number"
           onChange={(e) => setCurrPrice(e.target.value)}
+          placeholder="Enter the current price"
         ></input>
         <br></br>
         <br></br>
@@ -36,15 +41,19 @@ const Stocks = () => {
           id="qty"
           name="qty"
           value={qty}
+          type="Number"
+          placeholder="Enter the qty baught"
           onChange={(e) => setqty(e.target.value)}
         ></input>
         <br></br>
         <br></br>
         <button type="submit">Calculate P/L</button>
       </form>
-      <div>
-        <h1> the net is {(currPrice - buyPrice) * qty}</h1>
-      </div>
+      {isShow && (
+        <div>
+          <h1> the net is {(currPrice - buyPrice) * qty}</h1>
+        </div>
+      )}
     </div>
   );
 };

@@ -26,7 +26,7 @@ const Stocks = () => {
   };
   return (
     <div>
-      <h1>Stocks Profit/Loss</h1>
+      <h1>Stock Profile &amp; Loss Calculator</h1>
       <form onSubmit={submitFun}>
         <label htmlFor="buy">Stock initial Price : </label>
         <input

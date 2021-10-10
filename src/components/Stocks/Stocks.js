@@ -66,7 +66,8 @@ const Stocks = () => {
       {isShow && (
         <div>
           <h1 style={{ color: color() }}>
-            The P/L is {(currPrice - buyPrice) * qty}
+            The P/L is {(currPrice - buyPrice) * qty} and percentage is :{" "}
+            {(((currPrice - buyPrice) * qty) / buyPrice) * 100}
           </h1>
           <img alt="img" height="200rem" src={img()}></img>
         </div>
